@@ -23,15 +23,27 @@ from database import Base, engine, get_db
 from models import QuestionLog, Feedback
 from retrieval import retrieve
 from schemas import ChatRequest, ChatResponse, SourceOut, FeedbackRequest
-
-# Create tables if they don't exist yet (safe no-op if they already do)
-Base.metadata.create_all(bind=engine)
+from seed import run_seed
 
 app = FastAPI(
     title="UNZA Compass API",
     description="Independent student-built AI prototype — not an official UNZA service.",
     version="1.0.0",
 )
+
+
+@app.on_event("startup")
+def on_startup():
+    """
+    Creates tables (if missing) and seeds the admin account + knowledge base
+    on every boot. Safe to run repeatedly: seed_admin() just resets the
+    admin password to the current env value, and seed_knowledge() skips
+    entries that already exist (matched by title). This lets the app fully
+    initialize itself on hosts like Render's free tier where shell access
+    to run `python seed.py` manually isn't available.
+    """
+    run_seed()
+
 
 app.add_middleware(
     CORSMiddleware,
