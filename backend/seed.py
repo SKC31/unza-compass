@@ -10,6 +10,10 @@ What it does:
    ADMIN_EMAIL / ADMIN_PASSWORD from the environment.
 3. Loads knowledge base entries from the JSON files in ../knowledge/
    (skips items that already exist, matched by title, so it's safe to re-run).
+
+This module is also imported by main.py to run the same seeding logic
+automatically on app startup (see run_seed() below) — useful on hosts like
+Render's free tier where shell access isn't available to run this manually.
 """
 import json
 import os
@@ -73,8 +77,13 @@ def seed_knowledge(db):
     print(f"✓ Knowledge base seeded: {added} new items added")
 
 
-def main():
-    print("Setting up UNZA Compass database...")
+def run_seed():
+    """
+    Runs the full seed process: create tables, seed admin, seed knowledge.
+    Safe to call repeatedly (admin password is reset to env value each time,
+    knowledge items are matched by title and never duplicated).
+    Used both by the CLI entrypoint below and by main.py on startup.
+    """
     Base.metadata.create_all(bind=engine)
 
     db = SessionLocal()
@@ -84,6 +93,10 @@ def main():
     finally:
         db.close()
 
+
+def main():
+    print("Setting up UNZA Compass database...")
+    run_seed()
     print("\nDone. Start the backend with: uvicorn main:app --reload")
 
 
