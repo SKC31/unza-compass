@@ -1,0 +1,30 @@
+[
+  {
+    "title": "UNZA Schools and Faculties Overview",
+    "category": "Academics",
+    "content": "The University of Zambia (UNZA) is organized into several schools, including the School of Engineering, School of Natural Sciences, School of Humanities and Social Sciences, School of Education, School of Law, School of Medicine, School of Agricultural Sciences, School of Mines, School of Business, School of Veterinary Medicine, and School of Public Health, among others. Each school offers undergraduate and postgraduate programmes through its constituent departments. This is general/example information — please verify current school and department listings on the official UNZA website.",
+    "keywords": ["schools", "faculties", "departments", "unza", "programmes", "courses"],
+    "source": "General UNZA public information (verify at unza.zm)"
+  },
+  {
+    "title": "Examinations — General Process",
+    "category": "Academics",
+    "content": "UNZA typically holds end-of-semester examinations after coursework is completed. Students are usually required to meet a minimum attendance and continuous-assessment threshold to be eligible to sit examinations. Examination timetables are normally published by the Examinations Office ahead of the exam period. This is general/example information for prototype purposes — always confirm exact examination dates, eligibility rules, and procedures with your school's examinations office or the official UNZA academic calendar.",
+    "keywords": ["exams", "examinations", "timetable", "eligibility", "continuous assessment"],
+    "source": "General information — verify with UNZA Examinations Office"
+  },
+  {
+    "title": "Continuous Assessment and Coursework",
+    "category": "Academics",
+    "content": "Most UNZA courses combine continuous assessment (tests, assignments, practicals) with a final examination to determine the overall course grade. The exact weighting varies by school and course. Students should check their course outlines, distributed at the start of each semester by lecturers, for the specific breakdown that applies to each course.",
+    "keywords": ["coursework", "continuous assessment", "grading", "assignments", "tests"],
+    "source": "General information — verify with individual course outlines"
+  },
+  {
+    "title": "Academic Calendar",
+    "category": "Academics",
+    "content": "UNZA generally operates on a two-semester academic year, with each semester followed by an examination period and a break. Specific start dates, semester breaks, and examination periods change from year to year and are published in the official UNZA academic calendar. This prototype does not have access to the current calendar — please check the official UNZA website or your school's notice board.",
+    "keywords": ["academic calendar", "semester", "dates", "term", "schedule"],
+    "source": "Official UNZA Academic Calendar (verify at unza.zm)"
+  }
+]

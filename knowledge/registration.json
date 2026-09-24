@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Course Registration — General Steps",
+    "category": "Registration",
+    "content": "Course registration at UNZA is typically done at the start of each semester, usually through an online student information/registration portal. Students generally need to: (1) clear any outstanding fees or obtain the necessary clearance, (2) select courses for the semester based on their programme structure, (3) submit the registration for approval, often by an academic advisor or department. Registration deadlines are set each semester. This is general/example guidance for prototype purposes — please confirm the exact registration process, portal, and deadlines with your department or the UNZA registry.",
+    "keywords": ["register", "registration", "course registration", "enroll", "portal", "how to register"],
+    "source": "General information — verify with UNZA Registry / Academic Department"
+  },
+  {
+    "title": "Late Registration",
+    "category": "Registration",
+    "content": "Universities including UNZA often allow late registration for a limited window after the official registration period closes, sometimes with a late fee. Policies on late registration can change and vary by semester. Students needing to register late should contact their department or the registry directly for current rules and any applicable penalties.",
+    "keywords": ["late registration", "deadline", "penalty", "late fee"],
+    "source": "General information — verify with UNZA Registry"
+  },
+  {
+    "title": "Adding or Dropping Courses",
+    "category": "Registration",
+    "content": "Most universities, including UNZA, provide a short add/drop period at the start of each semester during which students can adjust their course selections. After this window closes, dropping a course may affect academic standing or require special permission. Check with your academic advisor or department for the current add/drop procedure and deadlines.",
+    "keywords": ["add course", "drop course", "change courses", "add drop period"],
+    "source": "General information — verify with academic department"
+  },
+  {
+    "title": "Fee Clearance Before Registration",
+    "category": "Registration",
+    "content": "Students are generally required to have paid tuition fees (or have an approved payment plan / sponsorship confirmation) before they can complete course registration. Specific fee amounts, payment deadlines, and accepted payment methods change and should be confirmed directly with the UNZA Bursar's office or Finance Department — this prototype does not have access to current fee schedules.",
+    "keywords": ["fees", "fee clearance", "tuition", "payment", "bursar", "sponsorship"],
+    "source": "General information — verify with UNZA Bursar's Office"
+  }
+]

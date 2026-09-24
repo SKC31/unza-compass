@@ -1,0 +1,37 @@
+[
+  {
+    "title": "UNZA Library Services",
+    "category": "Student Services",
+    "content": "The UNZA main library provides access to physical book collections, study spaces, and often digital/online resources such as e-journals and databases for registered students. Libraries are usually also present in individual schools/departments. Opening hours, borrowing policies, and access to online resources vary — check the library's own notice boards or official page for current details.",
+    "keywords": ["library", "books", "study space", "e-journals", "research"],
+    "source": "General information — verify with UNZA Library"
+  },
+  {
+    "title": "ICT and Student Email Services",
+    "category": "Student Services",
+    "content": "UNZA typically provides registered students with access to ICT services such as a student email account, campus Wi-Fi/internet access, and computer labs, usually managed through the university's ICT/Directorate of Information and Communication Technology. Account setup, Wi-Fi credentials, and lab hours should be confirmed with the ICT department directly.",
+    "keywords": ["ict", "wifi", "internet", "email", "computer lab", "student email"],
+    "source": "General information — verify with UNZA ICT Directorate"
+  },
+  {
+    "title": "Student Affairs / Dean of Students Office",
+    "category": "Student Services",
+    "content": "The Dean of Students / Student Affairs office typically handles matters such as student welfare, accommodation issues, disciplinary matters, counselling referrals, and coordination of student activities. Students with concerns outside of pure academics are usually directed to this office as a starting point.",
+    "keywords": ["dean of students", "student affairs", "welfare", "counselling", "support"],
+    "source": "General information — verify with Dean of Students Office"
+  },
+  {
+    "title": "Accommodation / Hostels",
+    "category": "Student Services",
+    "content": "UNZA generally offers on-campus hostel accommodation with limited capacity, allocated through an application process, often prioritizing certain categories of students (e.g., first years, distance from campus, need). Many students also live off-campus in private accommodation near the university. Application procedures, fees, and availability change each academic year — check with the Accommodation/Housing office for current information.",
+    "keywords": ["accommodation", "hostel", "housing", "residence", "where to stay"],
+    "source": "General information — verify with UNZA Accommodation Office"
+  },
+  {
+    "title": "Health and Student Support Services",
+    "category": "Student Services",
+    "content": "UNZA typically operates a student health/clinic service offering basic medical care and referrals for registered students. Some form of counselling or student support service is also usually available for mental health and personal challenges. For current operating hours, services offered, and how to access them, contact the relevant office directly.",
+    "keywords": ["health", "clinic", "medical", "counselling", "mental health", "wellness"],
+    "source": "General information — verify with UNZA Health/Clinic Services"
+  }
+]
