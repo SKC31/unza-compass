@@ -6,9 +6,9 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    # AI Provider
+    # AI Provider (Google Gemini — https://aistudio.google.com/apikey)
     AI_API_KEY: str = ""
-    AI_MODEL: str = "claude-3-5-sonnet-20241022"
+    AI_MODEL: str = "gemini-1.5-flash"
 
     # Database
     DATABASE_URL: str = "sqlite:///./unza_compass.db"

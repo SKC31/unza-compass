@@ -3,13 +3,14 @@ AI service abstraction.
 
 Wraps the LLM call behind a single function, `generate_answer()`, so the
 provider can be swapped later without touching main.py. Currently uses
-Anthropic's Claude API. If no API key is configured, or the call fails for
-any reason, the caller falls back to a knowledge-based, non-AI answer
-(see build_fallback_answer) — the app never crashes because the AI is down.
+Google's Gemini API (free tier via https://aistudio.google.com/apikey).
+If no API key is configured, or the call fails for any reason, the caller
+falls back to a knowledge-based, non-AI answer (see build_fallback_answer)
+— the app never crashes because the AI is down.
 """
 from typing import List, Tuple
 
-from anthropic import Anthropic, APIError
+import google.generativeai as genai
 
 from config import settings
 from models import KnowledgeItem
@@ -81,7 +82,7 @@ def generate_answer(question: str, context_items: List[KnowledgeItem]) -> Tuple[
         return build_fallback_answer(question, context_items), "FALLBACK"
 
     try:
-        client = Anthropic(api_key=settings.AI_API_KEY)
+        genai.configure(api_key=settings.AI_API_KEY)
         context_block = _build_context_block(context_items)
 
         user_message = (
@@ -90,22 +91,29 @@ def generate_answer(question: str, context_items: List[KnowledgeItem]) -> Tuple[
             "Answer the student's question using the context above."
         )
 
-        response = client.messages.create(
-            model=settings.AI_MODEL,
-            max_tokens=700,
-            system=SYSTEM_PROMPT,
-            messages=[{"role": "user", "content": user_message}],
+        model = genai.GenerativeModel(
+            model_name=settings.AI_MODEL,
+            system_instruction=SYSTEM_PROMPT,
         )
 
-        answer_text = "".join(
-            block.text for block in response.content if getattr(block, "type", None) == "text"
-        ).strip()
+        response = model.generate_content(
+            user_message,
+            generation_config=genai.types.GenerationConfig(max_output_tokens=700),
+        )
+
+        try:
+            answer_text = (response.text or "").strip()
+        except ValueError:
+            # response.text raises if Gemini returned no candidates (e.g. blocked
+            # by safety filters) — treat that the same as an empty answer.
+            answer_text = ""
 
         if not answer_text:
             return build_fallback_answer(question, context_items), "FALLBACK"
 
         return answer_text, "AI"
 
-    except (APIError, Exception):
-        # Any AI failure (bad key, network issue, rate limit, etc.) degrades gracefully.
+    except Exception:
+        # Any AI failure (bad key, network issue, rate limit, safety block, etc.)
+        # degrades gracefully rather than crashing the request.
         return build_fallback_answer(question, context_items), "FALLBACK"
