@@ -11,7 +11,8 @@ falls back to a knowledge-based, non-AI answer (see build_fallback_answer)
 import logging
 from typing import List, Tuple
 
-import google.generativeai as genai
+from google import genai
+from google.genai import types as genai_types
 
 from config import settings
 from models import KnowledgeItem
@@ -85,7 +86,7 @@ def generate_answer(question: str, context_items: List[KnowledgeItem]) -> Tuple[
         return build_fallback_answer(question, context_items), "FALLBACK"
 
     try:
-        genai.configure(api_key=settings.AI_API_KEY)
+        client = genai.Client(api_key=settings.AI_API_KEY)
         context_block = _build_context_block(context_items)
 
         user_message = (
@@ -94,14 +95,13 @@ def generate_answer(question: str, context_items: List[KnowledgeItem]) -> Tuple[
             "Answer the student's question using the context above."
         )
 
-        model = genai.GenerativeModel(
-            model_name=settings.AI_MODEL,
-            system_instruction=SYSTEM_PROMPT,
-        )
-
-        response = model.generate_content(
-            user_message,
-            generation_config=genai.types.GenerationConfig(max_output_tokens=700),
+        response = client.models.generate_content(
+            model=settings.AI_MODEL,
+            contents=user_message,
+            config=genai_types.GenerateContentConfig(
+                system_instruction=SYSTEM_PROMPT,
+                max_output_tokens=700,
+            ),
         )
 
         try:
