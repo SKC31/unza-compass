@@ -8,12 +8,15 @@ If no API key is configured, or the call fails for any reason, the caller
 falls back to a knowledge-based, non-AI answer (see build_fallback_answer)
 — the app never crashes because the AI is down.
 """
+import logging
 from typing import List, Tuple
 
 import google.generativeai as genai
 
 from config import settings
 from models import KnowledgeItem
+
+logger = logging.getLogger("unza_compass.ai")
 
 SYSTEM_PROMPT = """You are UNZA Compass, an AI assistant that helps University of Zambia (UNZA) \
 students navigate university information. You are an independent student-built prototype, \
@@ -116,4 +119,5 @@ def generate_answer(question: str, context_items: List[KnowledgeItem]) -> Tuple[
     except Exception:
         # Any AI failure (bad key, network issue, rate limit, safety block, etc.)
         # degrades gracefully rather than crashing the request.
+        logger.exception("Gemini call failed; falling back to knowledge-based answer")
         return build_fallback_answer(question, context_items), "FALLBACK"
