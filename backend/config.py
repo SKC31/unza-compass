@@ -8,7 +8,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Settings(BaseSettings):
     # AI Provider (Google Gemini — https://aistudio.google.com/apikey)
     AI_API_KEY: str = ""
-    AI_MODEL: str = "gemini-2.5-flash"
+    AI_MODEL: str = "gemini-3.8-flash"
 
     # Database
     DATABASE_URL: str = "sqlite:///./unza_compass.db"
